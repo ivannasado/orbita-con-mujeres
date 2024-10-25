@@ -2,6 +2,7 @@
 function ajustarResponsivo() {
     const titulo = document.querySelector("#titulo h1");
     const subtitulo = document.querySelector("#titulo h2");
+    const contenedorPrincipal = document.querySelector(".row.align-items-center");
     const boxContacto = document.querySelector("#box-contacto");
     
     const anchoPantalla = window.innerWidth;
@@ -9,14 +10,39 @@ function ajustarResponsivo() {
     if (anchoPantalla < 576) { // Pantallas pequeñas (celulares)
         titulo.style.fontSize = "3em";
         subtitulo.style.fontSize = "2.5em";
-        boxContacto.style.marginTop = "1em";
+        boxContacto.style.marginTop = "3em";
         imagenMujeres.style.width = "80%";
+        imagenMujeres.style.marginTop = "3rem";
     } else if (anchoPantalla < 768) { // Tablets
-        titulo.style.fontSize = "5em";
-        subtitulo.style.fontSize = "4em";
+        titulo.style.fontSize = "3em";
+        subtitulo.style.fontSize = "3em";
         boxContacto.style.marginTop = "5em";
         imagenMujeres.style.width = "60%";
-    } else { // Escritorio
+        contenedorPrincipal.style.flexDirection = "column";
+    } else if(anchoPantalla < 992){
+        titulo.style.fontSize = "6em";
+        subtitulo.style.fontSize = "5em";
+        titulo.style.marginLeft = "0"; // Resetea marginLeft
+        subtitulo.style.marginLeft = "0";
+        boxContacto.style.marginTop = "3em";
+        
+        // Apilar elementos (título, subtítulo, box, imagen)
+        contenedorPrincipal.style.flexDirection = "column"; // Apila en columna
+        titulo.style.order = "1"; // Orden del título
+        subtitulo.style.order = "2"; // Orden del subtítulo
+        boxContacto.style.order = "3";
+        imagenMujeres.style.order = "4";
+        imagenMujeres.style.marginTop = "3em";
+    }else if(anchoPantalla < 1200){
+        titulo.style.fontSize = "6em";
+    subtitulo.style.fontSize = "5em";
+    
+    boxContacto.style.marginTop = "-12.5em";
+        titulo.style.marginLeft = "-6em"; // Ajusta el valor para la cantidad deseada
+    subtitulo.style.marginLeft = "-6em"; // Ajusta el valor para la cantidad deseada
+
+    }
+    else{ // Escritorio
         titulo.style.fontSize = "7em";
         subtitulo.style.fontSize = "7em";
         boxContacto.style.marginTop = "-17em";
@@ -25,9 +51,9 @@ function ajustarResponsivo() {
 }
 
 // Ejecutar la función al cargar la página y al cambiar el tamaño de la pantalla
-window.addEventListener("load", ajustarResponsivo);
-window.addEventListener("resize", ajustarResponsivo);
-
+window.addEventListener('resize', ajustarResponsivo);
+// Llama a la función cuando se carga la página
+ajustarResponsivo();
 
 /* --------------------- VALIDACIONES ------------------- */
 document.getElementById('btn-enviar').addEventListener('click', function () { /* Al hacer click en el botón de enviar... */

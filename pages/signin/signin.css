@@ -35,6 +35,7 @@ h2{
     margin-top:0.3em;
     /* Formato Texto */
     font-family: "Style Script", cursive;
+    font-size: 7em;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
 }
 
@@ -56,7 +57,7 @@ h3{
     box-shadow: 0 0 8px 35px var(--text-title-color);
     font-family: "Poppins", sans-serif;
   /*  font-family: "Montserrat", sans-serif;   */
-    margin-right: 10em;
+    margin-right: 0;
     margin-top: -17em;
 }
 
