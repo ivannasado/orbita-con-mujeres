@@ -236,14 +236,16 @@ body {
 
 /*Boton favorito*/
 
-#favorito-regular {
+
+
+.favorito {
     background-color: white;
             border: none;
             cursor: pointer;
             font-size: 16px;
 }
 
-#favorito-regular.clickeado {
+.favorito.clickeado {
 	
 	color: var(--butPink-bg-color);
 }

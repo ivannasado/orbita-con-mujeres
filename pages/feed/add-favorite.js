@@ -1,12 +1,12 @@
-function cambiarColor() {
+/* function cambiarColor() {
     let boton = document.getElementById("favorito-regular");
     boton.classList.toggle("clickeado");  // Alterna la clase 'clickeado'
-}
+} */
 
 
-/* const btnsFavorite = document.querySelectorAll('.fav');
-const products = document.querySelectorAll('.row');
-const counterFavorites = document.querySelector('.counter-favorite');
+/* const btnsFavorite = document.querySelectorAll('.favorito');
+const publi = document.querySelectorAll('.row');
+
 
 const containerListFavorites = document.querySelector(
 	'.container-list-favorites'
@@ -67,7 +67,7 @@ const updateFavoriteMenu = () => {
 };
 
 const showHTML = () => {
-	products.forEach(product => {
+	publi.forEach(product => {
 		const contentProduct = product.querySelector(
 			'.content-card-product'
 		);
@@ -87,7 +87,7 @@ const showHTML = () => {
 		favoriteActiveButton.classList.toggle('active', isFavorite);
 	});
 
-	counterFavorites.textContent = favorites.length;
+	
 	updateFavoriteMenu();
 };
 
@@ -121,4 +121,4 @@ btnClose.addEventListener('click', () => {
 });
 
 loadFavoritesFromLocalStorage();
-updateFavoriteMenu(); */
+updateFavoriteMenu();  */

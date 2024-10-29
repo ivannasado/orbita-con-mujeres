@@ -14,6 +14,7 @@ class PostsController {
             //user: user, No tenemos user aun estamos trabajando en eso 
             content: content,
             imageUrl: imageUrl
+            //etiqueta: 
         };
 
         // Darle push al post de los posts
