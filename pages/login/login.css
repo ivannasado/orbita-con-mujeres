@@ -16,12 +16,6 @@
 /* **********Fondo*********** */
 body {
     background: var(--body-bg-color);
-    opacity: 0; /* Empezar con opacidad 0 para el efecto de aparición */
-    transition: opacity 2s ease;
-}
-
-body.fade-in {
-    opacity: 1; /* Cambiar la opacidad a 1 para que la página aparezca */
 }
 
 * {
@@ -40,8 +34,8 @@ h2{
     margin-left: -3em;
     margin-top:0.3em;
     /* Formato Texto */
-    font-size: 7em;
     font-family: "Style Script", cursive;
+    font-size: 7em;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
 }
 
@@ -63,8 +57,8 @@ h3{
     box-shadow: 0 0 8px 35px var(--text-title-color);
     font-family: "Poppins", sans-serif;
   /*  font-family: "Montserrat", sans-serif;   */
-    margin-right: 10em;
-    margin-top: -12em;
+    margin-right: 8em;
+    margin-top: -17em;
 }
 
 .btn{
@@ -72,6 +66,7 @@ h3{
     font-size: 20px;
     width: 200px;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+
 }
 
 .btn:hover {
@@ -131,3 +126,39 @@ h3{
     z-index: -1;        /* Enviar al fondo si sobrepasa otros elementos */
 } 
 
+/* Ajuste para pantallas pequeñas (celulares) */
+@media (max-width: 576px) {
+    #imagenMujeres {
+        width: 100%;    /* La imagen ocupará todo el ancho disponible */
+    }
+}
+
+/* Ajuste para tablets */
+@media (min-width: 577px) and (max-width: 768px) {
+    #imagenMujeres {
+        width: 70%;    /* Tamaño más grande que en celulares */
+    }
+}
+
+
+/* Responsividad para pantallas pequeñas (celulares) */
+@media (max-width: 576px) {
+    #box-contacto {
+        width: 90%;
+        margin-right: 0;
+    }
+
+    h1, h2 {
+        text-align: center;
+        margin-left: 0;
+    }
+}
+
+/* Responsividad para tablets */
+@media (min-width: 577px) and (max-width: 768px) {
+    #box-contacto {
+        width: 80%;
+        margin-right: 0;
+    }
+
+}
