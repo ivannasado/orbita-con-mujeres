@@ -128,38 +128,36 @@ h3{
 
 /* Ajuste para pantallas pequeñas (celulares) */
 @media (max-width: 576px) {
-    #imagenMujeres {
-        width: 100%;    /* La imagen ocupará todo el ancho disponible */
-    }
-}
-
-/* Ajuste para tablets */
-@media (min-width: 577px) and (max-width: 768px) {
-    #imagenMujeres {
-        width: 70%;    /* Tamaño más grande que en celulares */
-    }
-}
-
-
-/* Responsividad para pantallas pequeñas (celulares) */
-@media (max-width: 576px) {
+    /* imagen */
+    /* #imagenMujeres {
+        width: 100%;    */ /* La imagen ocupará todo el ancho disponible */
+ /*    } */
+    /* cuadro */
     #box-contacto {
         width: 90%;
         margin-right: 0;
     }
-
+    /* Titulo */
     h1, h2 {
         text-align: center;
         margin-left: 0;
     }
+
 }
 
-/* Responsividad para tablets */
+/* Ajuste para tablets */
 @media (min-width: 577px) and (max-width: 768px) {
+    /* imagen */
+   /*  #imagenMujeres {
+        width: 70%;    /* Tamaño más grande que en celulares */
+   /*  } */ 
+    /* cuadro */
     #box-contacto {
         width: 80%;
-        margin-right: 0;
+        margin-right: 2;
     }
-
 }
+
+
+
 
