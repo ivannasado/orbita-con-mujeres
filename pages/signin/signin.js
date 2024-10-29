@@ -56,9 +56,12 @@ window.addEventListener('resize', ajustarResponsivo);
 ajustarResponsivo();
 
 /* --------------------- VALIDACIONES ------------------- */
-document.getElementById('btn-enviar').addEventListener('click', function () { /* Al hacer click en el botón de enviar... */
-   
-    /* Pasamos los datos del html a valores para JavaScript */
+const signInForm = document.getElementById('form-enviar');
+
+signInForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+
+    // Validación de los datos
     const nombre = document.getElementById('Nombre').value; 
     const apellido = document.getElementById('Apellido').value;
     const usuario = document.getElementById('Usuario').value;
@@ -66,41 +69,7 @@ document.getElementById('btn-enviar').addEventListener('click', function () { /*
     const email = document.getElementById('E-mail').value;
     const password = document.getElementById('Password').value;
     const confirmPassword = document.getElementById('ConfirmPassword').value;
-    
-    if (!isNaN(nombre)) {
-        /* Si el nombre es distinto a lo estipulado suelta un mensaje de error */
-        error("El nombre solo debe contener letras.", "errorBoxNombre");
-    }
-
-    if (!isNaN(apellido)) {
-        /* Si el apellido es distinto a lo estipulado suelta un mensaje de error */
-        error("El apellido sólo debe contener letras.", "errorBoxApellido");
-    }
-
-    if (!isNaN(usuario)) {
-        /* Si el usuario es distinto a lo estipulado suelta un mensaje de error */
-        error("El nombre de usuario sólo debe contener letras.", "errorBoxUsuario");
-    }
-
-    if (telefono.length < 10) {
-        /* Si el teléfono es distinto a lo estipulado suelta un mensaje de error */
-        error("El teléfono debe contener más de 10 dígitos.", "errorBoxTelefono");
-    }
-
-    if (email.includes('@') || !email.includes('.')) {
-        /* Si el correo es distinto a lo estipulado suelta un mensaje de error */
-        error("Ingresa un correo electrónico válido.", "errorBoxEmail");
-    }
-
-    if (password.length < 8 || !password.match(/[$@$!%*?&]/) || !password.match(/[0-9]/))  {
-        /* La contraseña debe tener al menos 8 caracteres, contener un carácter especial y un número */
-        error("La contraseña debe tener al menos 8 caracteres, un carácter especial y un número.", "errorBoxContraseña");
-    }
-
-    if (!(confirmPassword === password))  {
-        /* La confirmación debe ser igual a la contraseña*/
-        error("Las contraseñas deben ser iguales.", "errorBoxConfirmarContraseña");
-    }
+    let isValid = true;
 
     function error(mostrarMensajeDanger, errorBoxId) {
         const mensajeError = document.getElementById(errorBoxId);
@@ -110,8 +79,41 @@ document.getElementById('btn-enviar').addEventListener('click', function () { /*
                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
             </div>
         `;
-
-        /* Para insertar el código HTML en el documento en lugar de cambiar el contenido de un elemento, se usa el método insertAdjacentHTML (https://developer.mozilla.org/es/docs/Web/API/Element/innerHTML) */
         mensajeError.insertAdjacentHTML('afterbegin', alertError);
+        isValid = false;
+    }
+
+    // Verificación de cada campo y errores
+    if (!isNaN(nombre)) error("El nombre solo debe contener letras.", "errorBoxNombre");
+    if (!isNaN(apellido)) error("El apellido sólo debe contener letras.", "errorBoxApellido");
+    if (!isNaN(usuario)) error("El nombre de usuario sólo debe contener letras.", "errorBoxUsuario");
+    if (telefono.length < 10) error("El teléfono debe contener más de 10 dígitos.", "errorBoxTelefono");
+    if (!email.includes('@')) error("Ingresa un correo electrónico válido.", "errorBoxEmail");
+    if (password.length < 8 || !password.match(/[$@$!%*?&]/) || !password.match(/[0-9]/)) {
+        error("La contraseña debe tener al menos 8 caracteres, un carácter especial y un número.", "errorBoxContraseña");
+    }
+    if (confirmPassword !== password) error("Las contraseñas deben ser iguales.", "errorBoxConfirmarContraseña");
+
+    if (isValid) {
+        const Usuarios = JSON.parse(localStorage.getItem('users')) || [];
+        
+        const usuarioRegistrado = Usuarios.find(user => user.usuario === usuario);
+        
+        if (usuarioRegistrado) {
+            error("Usuario ya registrado");
+        } else {
+            Usuarios.push({ usuario: usuario, password: password });
+            localStorage.setItem('users', JSON.stringify(Usuarios));
+            console.log("Registro Exitoso");
+
+            window.location.href = '../feed/feed.html';
+        }
+    } else {
+        console.log("Errores en la validación, no se guarda el usuario.");
     }
 });
+
+
+
+
+
