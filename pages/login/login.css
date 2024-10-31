@@ -37,8 +37,7 @@ h2{
     
     color: var(--text-title-color);
     text-align: center;
-    margin-left: -3em;
-    margin-top:0.3em;
+    
     /* Formato Texto */
     font-size: 7em;
     font-family: "Style Script", cursive;
@@ -62,9 +61,6 @@ h3{
     background: var(--text-title-color);
     box-shadow: 0 0 8px 35px var(--text-title-color);
     font-family: "Poppins", sans-serif;
-  /*  font-family: "Montserrat", sans-serif;   */
-    margin-right: 10em;
-    margin-top: -12em;
 }
 
 .btn{
@@ -131,3 +127,95 @@ h3{
     z-index: -1;        /* Enviar al fondo si sobrepasa otros elementos */
 } 
 
+
+
+/* Extra small devices (phones, 600px and down) */
+ @media only screen and (max-width: 600px) {
+    .container{
+        gap: 50px;
+    }
+
+    #titulo{
+        margin-top: 2em;
+    }
+
+    #imagenMujeres{
+        display: none;
+    }
+
+    
+    #box-contacto{
+        width: auto;
+        height: auto;         
+    }
+
+} 
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) {
+    .container{
+        gap: 50px;
+    }
+
+    #titulo{
+        margin-top: 2em;
+    }
+
+    #imagenMujeres{
+        display: none;
+    }
+}
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {
+    .container{
+        gap: 50px;
+    }
+
+    #titulo{
+        margin-top: 2em;
+    }
+    
+    #imagenMujeres{
+        display:block;/* Mostrar la imagen */
+    }
+
+    #box-contacto{
+        margin-top: 5em;
+        margin-left: 6em;
+        width: 50%;
+        height: 75%;         
+    }
+
+
+}
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+    .container{
+        gap: 20px;
+    }
+
+  
+    
+    #titulo{
+        font-size: 80%;
+        margin-top:-12em;
+        margin-left: 6em;
+        
+    }
+
+}
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1200px) {
+    #box-contacto{
+        margin-top: 8em;
+        margin-left: 12em;
+    }
+    
+    #titulo{
+        margin-top: -6em;
+        margin-left: 5em;
+    }
+}
