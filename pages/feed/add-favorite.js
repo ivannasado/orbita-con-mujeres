@@ -4,14 +4,14 @@
 } */
 
 
-/* const btnsFavorite = document.querySelectorAll('.favorito');
+const btnsFavorite = document.querySelectorAll('.favorito');
 const publi = document.querySelectorAll('.row');
 
 
-const containerListFavorites = document.querySelector(
-	'.container-list-favorites'
+const containerPostFavorites = document.querySelector(
+	'.post-destacados'
 );
-const listFavorites = document.querySelector('.list-favorites');
+const postFavorites = document.querySelector('.card');
 
 let favorites = [];
 
@@ -28,27 +28,27 @@ const loadFavoritesFromLocalStorage = () => {
 	}
 };
 
-const toggleFavorite = product => {
+const toggleFavorite = post => {
 	const index = favorites.findIndex(
-		element => element.id === product.id
+		element => element.id === post.id
 	);
 
 	if (index > -1) {
 		favorites.splice(index, 1);
 		updateFavoritesInLocalStorage();
 	} else {
-		favorites.push(product);
+		favorites.push(post);
 		updateFavoritesInLocalStorage();
 	}
 };
 
-const updateFavoriteMenu = () => {
-	listFavorites.innerHTML = '';
+const updateFavoritePage = () => {
+	postFavorites.innerHTML = '';
 
 	favorites.forEach(fav => {
 		// Crear un nuevo elemento 'div' para el producto favorito
 		const favoriteCard = document.createElement('div');
-		favoriteCard.classList.add('card-favorite');
+		favoriteCard.classList.add('card');
 
 		// Crear y añadir el título del producto
 		const titleElement = document.createElement('p');
@@ -62,7 +62,7 @@ const updateFavoriteMenu = () => {
 		favoriteCard.appendChild(priceElement);
 
 		// Añadir el producto favorito a la lista
-		listFavorites.appendChild(favoriteCard);
+		postFavorites.appendChild(favoriteCard);
 	});
 };
 
@@ -88,7 +88,7 @@ const showHTML = () => {
 	});
 
 	
-	updateFavoriteMenu();
+	updateFavoritePage();
 };
 
 btnsFavorite.forEach(button => {
@@ -113,12 +113,12 @@ const buttonHeaderFavorite = document.querySelector(
 );
 
 buttonHeaderFavorite.addEventListener('click', () => {
-	containerListFavorites.classList.toggle('show');
+	containerPostFavorites.classList.toggle('show');
 });
 
 btnClose.addEventListener('click', () => {
-	containerListFavorites.classList.remove('show');
+	containerPostFavorites.classList.remove('show');
 });
 
 loadFavoritesFromLocalStorage();
-updateFavoriteMenu();  */
+updateFavoritePage();  
