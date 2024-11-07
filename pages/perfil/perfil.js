@@ -59,42 +59,6 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 
-// Array para almacenar las publicaciones favoritas
-let favoritePosts = [];
-
-// Ejemplo de publicaciones disponibles en la red social
-const allPosts = [
-  { id: 1, content: "¡Primera publicación! 😊" },
-  { id: 2, content: "¡Me encanta esta red social! 🚀" },
-  { id: 3, content: "¿Quién más está aprendiendo JavaScript? 🤔" },
-];
-
-// Función para renderizar las publicaciones favoritas en el perfil
-function renderFavoritePosts() {
-  const container = document.getElementById("favorite-posts-container");
-  container.innerHTML = ""; // Limpiar el contenedor
-
-  favoritePosts.forEach((post) => {
-    const postElement = document.createElement("div");
-    postElement.classList.add("post");
-    postElement.innerHTML = `<p>${post.content}</p>`;
-    container.appendChild(postElement);
-  });
-}
-
-// Función para añadir una publicación a favoritos
-function addFavoritePost(postId) {
-  const post = allPosts.find((p) => p.id === postId);
-  if (post && !favoritePosts.includes(post)) {
-    favoritePosts.push(post);
-    renderFavoritePosts();
-  }
-}
-
-// Simulando que el usuario añade una publicación a favoritos
-addFavoritePost(1); // Añade la primera publicación
-addFavoritePost(3); // Añade la tercera publicación
-
 /* FUNCIONALIDAD */
 window.addEventListener('DOMContentLoaded', function () {
   // Obtener los datos del localStorage
