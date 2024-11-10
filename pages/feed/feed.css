@@ -244,8 +244,3 @@ body {
             cursor: pointer;
             font-size: 16px;
 }
-
-.favorito.clickeado {
-	
-	color: var(--butPink-bg-color);
-}

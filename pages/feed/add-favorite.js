@@ -1,64 +1,64 @@
- // Función para manejar el clic en el botón de favorito en cualquier página
-function toggleFavorite(button, index) {
+
+// Función para manejar el clic en el botón de favorito en cualquier página
+function toggleFavorite(button, postId) {
     const icon = button.querySelector("i");
 
     if (icon.classList.contains("bi-star")) {
         icon.classList.remove("bi-star");
         icon.classList.add("bi-star-fill");
 
-        // Obtén el contenido de la publicación
-        const postContent = button.closest(".card").innerHTML;
-
-        // Guarda la publicación en el localStorage como favorita
-        localStorage.setItem(`favoritePost-${index}`, postContent);
+        const postContent = button.closest(".card").outerHTML;
+        localStorage.setItem(`favoritePost-${postId}`, postContent);
     } else {
         icon.classList.remove("bi-star-fill");
         icon.classList.add("bi-star");
 
-        // Elimina la publicación de favoritos en el localStorage
-        localStorage.removeItem(`favoritePost-${index}`);
+        localStorage.removeItem(`favoritePost-${postId}`);
     }
+
+    loadFavoritePosts(); // Recargar los favoritos en el perfil
 }
 
 // Configura los botones de favorito en las publicaciones iniciales
 document.querySelectorAll(".favorito").forEach((button, index) => {
-    button.addEventListener("click", () => toggleFavorite(button, index));
+    const postId = button.getAttribute("data-id");
+    button.addEventListener("click", () => toggleFavorite(button, postId));
 });
 
 // Función para cargar las publicaciones favoritas en la página de perfil
 function loadFavoritePosts() {
     const favoritesContainer = document.querySelector(".post-destacados");
 
-    if (favoritesContainer) {
-        for (let i = 0; i < localStorage.length; i++) {
-            const key = localStorage.key(i);
+    // Verifica que el contenedor de favoritos exista antes de continuar
+    if (!favoritesContainer) {
+        console.warn("El contenedor de favoritos (.post-destacados) no se encontró en el DOM.");
+        return;
+    }
 
-            // Verifica que el key corresponda a una publicación favorita
-            if (key.startsWith("favoritePost-")) {
-                const postContent = localStorage.getItem(key);
+    favoritesContainer.innerHTML = ''; // Limpia los favoritos actuales
 
-                // Crea un nuevo elemento div para la publicación
-                const favoritePostDiv = document.createElement("div");
-                favoritePostDiv.classList.add("card");
-                favoritePostDiv.innerHTML = postContent;
+    for (let i = 0; i < localStorage.length; i++) {
+        const key = localStorage.key(i);
+        if (key.startsWith("favoritePost-")) {
+            const postContent = localStorage.getItem(key);
+            const favoritePostDiv = document.createElement("div");
+            favoritePostDiv.innerHTML = postContent;
 
-                // Agrega un event listener al icono de estrella en esta publicación en el perfil
-                const starButton = favoritePostDiv.querySelector(".favorito");
-                const index = key.split('-')[1]; // Obtén el índice de la clave
+            const starButton = favoritePostDiv.querySelector(".favorito");
+            const postId = key.split('-')[1];
+            starButton.addEventListener("click", () => {
+                toggleFavorite(starButton, postId);
+                favoritePostDiv.remove(); // Elimina la publicación del perfil
+            });
 
-                starButton.addEventListener("click", () => {
-                    toggleFavorite(starButton, index);
-                    favoritePostDiv.remove(); // Quita la publicación del perfil
-                });
-
-                // Agrega la publicación al contenedor en la página de perfil
-                favoritesContainer.appendChild(favoritePostDiv);
-            }
+            favoritesContainer.appendChild(favoritePostDiv);
         }
     }
 }
 
-// Llama a la función cuando se carga la página de perfil
 document.addEventListener("DOMContentLoaded", loadFavoritePosts);
+
+
+
 
 

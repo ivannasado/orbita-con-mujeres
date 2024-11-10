@@ -1,3 +1,5 @@
+
+
 // Crear la clase PostController
 class PostsController {
     //  constructor que define las caracteristicas del post
@@ -23,4 +25,4 @@ class PostsController {
         //Guardar los post en el local storage
         localStorage.setItem("posts", JSON.stringify(this.posts));
     }
-}
+} 
