@@ -5,7 +5,7 @@ const postController = new PostsController(0);
 const newPostForm = document.querySelector('#newPostForm');
 
 // Function to create the HTML for a post
-const createPostHTML = (content, imageUrl = '', postId) => {
+const createPostHTML = (content, imageUrl = '', postId, etiqueta = '') => {
     return `
         <div class="col-sm-6 col-lg-4 mb-4">
             <div class="card">
@@ -23,6 +23,7 @@ const createPostHTML = (content, imageUrl = '', postId) => {
                 </div>
                 <div class="card-body">
                     <p class="card-text">${content}</p>
+                    <p class="card-text"><small class="text-muted">#${etiqueta}</small></p>
                 </div>
             </div>
         </div>
@@ -38,8 +39,8 @@ if (newPostForm) {
         // Get the values of the inputs
         const newPostContent = document.querySelector('#postText').value;
         const newPostImageUrl = document.querySelector('#postImage');
+        const etiqueta = document.querySelector('#menu-etiqueta').value;
         const newCard = document.querySelector('.row');
-    
         const postId = postController.currentId;
     
         // Check if a file is selected and create a FileReader to read it
@@ -48,20 +49,21 @@ if (newPostForm) {
             
             reader.onload = function (e) {
                 const imageUrl = e.target.result;
-                postController.addItem(newPostContent, imageUrl);
-                newCard.insertAdjacentHTML('beforeend', createPostHTML(newPostContent, imageUrl, postId));
+                postController.addItem(newPostContent, imageUrl, etiqueta);
+                newCard.insertAdjacentHTML('beforeend', createPostHTML(newPostContent, imageUrl, postId, etiqueta));
                 setFavoriteButton(postId);
             };
             reader.readAsDataURL(newPostImageUrl.files[0]);
         } else {
-            postController.addItem(newPostContent, '');
-            newCard.insertAdjacentHTML('beforeend', createPostHTML(newPostContent, '', postId));
+            postController.addItem(newPostContent, '', etiqueta);
+            newCard.insertAdjacentHTML('beforeend', createPostHTML(newPostContent, '', postId, etiqueta));
             setFavoriteButton(postId);
         }
     
         // Clear the form
         document.querySelector('#postText').value = '';  
         newPostImageUrl.value = '';
+        document.querySelector('#menu-etiqueta').value = 'Etiqueta';
     });
 } else {
     console.warn("El formulario #newPostForm no se encontró en esta página.");

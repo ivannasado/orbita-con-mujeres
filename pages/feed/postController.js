@@ -9,14 +9,14 @@ class PostsController {
     }
 
     // Create the addItem method
-    addItem( content, imageUrl) {
+    addItem( content, imageUrl, etiqueta) {
         const post = {
             //  Crea el conteo de los post que se van subiendo
             id: this.currentId++,
             //user: user, No tenemos user aun estamos trabajando en eso 
             content: content,
-            imageUrl: imageUrl
-            //etiqueta: 
+            imageUrl: imageUrl,
+            etiqueta: etiqueta
         };
 
         // Darle push al post de los posts
