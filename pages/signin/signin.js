@@ -4,56 +4,104 @@ function ajustarResponsivo() {
     const subtitulo = document.querySelector("#titulo h2");
     const contenedorPrincipal = document.querySelector(".row.align-items-center");
     const boxContacto = document.querySelector("#box-contacto");
-    
+    const imagenMujeres = document.querySelector("#imagenMujeres");
+
     const anchoPantalla = window.innerWidth;
+    const altoPantalla = window.innerHeight;
 
     if (anchoPantalla < 576) { // Pantallas pequeñas (celulares)
-        titulo.style.fontSize = "3em";
-        subtitulo.style.fontSize = "2.5em";
+        titulo.style.fontSize = "4em";
+        subtitulo.style.fontSize = "4em";
         boxContacto.style.marginTop = "3em";
-        imagenMujeres.style.width = "80%";
-        imagenMujeres.style.marginTop = "3rem";
-    } else if (anchoPantalla < 768) { // Tablets
-        titulo.style.fontSize = "3em";
-        subtitulo.style.fontSize = "3em";
-        boxContacto.style.marginTop = "5em";
-        imagenMujeres.style.width = "60%";
+        boxContacto.style.marginLeft = "1";
+        titulo.style.marginLeft = "-1em";
+        subtitulo.style.marginLeft = "-1em";
+        imagenMujeres.style.display = "none"; // Oculta la imagen 
+       
+
+    } else if (anchoPantalla < 768) { // Entre celular y tablet
+        titulo.style.fontSize = "4em";
+        subtitulo.style.fontSize = "4em";
+        boxContacto.style.marginTop = "3em";
+        boxContacto.style.marginLeft = "0";
+        titulo.style.marginLeft = "-1em";
+        subtitulo.style.marginLeft = "-1em";
+        imagenMujeres.style.display = "none"; // Oculta la imagen
         contenedorPrincipal.style.flexDirection = "column";
-    } else if(anchoPantalla < 992){
+ 
+    } else if (anchoPantalla < 992) { // Tablets
+        titulo.style.fontSize = "6em";
+        subtitulo.style.fontSize = "6em";
+        boxContacto.style.marginTop = "3em";
+        boxContacto.style.marginLeft = "-2em";
+        titulo.style.marginLeft = "-1em";
+        subtitulo.style.marginLeft = "-1em";
+        contenedorPrincipal.style.flexDirection = "column";
+        imagenMujeres.style.width = "50%";
+        imagenMujeres.style.display = "block";
+    
+        // Orden de los elementos
+        titulo.style.order = "1";
+        subtitulo.style.order = "2";
+        boxContacto.style.order = "3";
+        imagenMujeres.style.display = "none"; // Oculta la imagen */
+   
+
+    } else if (anchoPantalla < 1044) {
+        titulo.style.fontSize = "5em";
+        subtitulo.style.fontSize = "5em";
+        boxContacto.style.marginTop = "-12.5em";
+        boxContacto.style.marginLeft = "-6em";
+        titulo.style.marginLeft = "-6em";
+        subtitulo.style.marginLeft = "-6em";
+        contenedorPrincipal.style.flexDirection = "column";
+
+        titulo.style.order = "1";
+        subtitulo.style.order = "2";
+        boxContacto.style.order = "3";
+        imagenMujeres.style.width = "50%";
+        imagenMujeres.style.marginTop = "12em";
+        imagenMujeres.style.display = "block"; // Asegúrate de mostrar la imagen
+       
+
+    } else if (anchoPantalla < 1200) {
         titulo.style.fontSize = "6em";
         subtitulo.style.fontSize = "5em";
-        titulo.style.marginLeft = "0"; // Resetea marginLeft
-        subtitulo.style.marginLeft = "0";
-        boxContacto.style.marginTop = "3em";
-        
-        // Apilar elementos (título, subtítulo, box, imagen)
-        contenedorPrincipal.style.flexDirection = "column"; // Apila en columna
-        titulo.style.order = "1"; // Orden del título
-        subtitulo.style.order = "2"; // Orden del subtítulo
-        boxContacto.style.order = "3";
-        imagenMujeres.style.order = "4";
-        imagenMujeres.style.marginTop = "3em";
-    }else if(anchoPantalla < 1200){
-        titulo.style.fontSize = "6em";
-    subtitulo.style.fontSize = "5em";
-    
-    boxContacto.style.marginTop = "-12.5em";
-        titulo.style.marginLeft = "-6em"; // Ajusta el valor para la cantidad deseada
-    subtitulo.style.marginLeft = "-6em"; // Ajusta el valor para la cantidad deseada
+        boxContacto.style.marginTop = "-12.5em";
+        titulo.style.marginLeft = "-6em";
+        subtitulo.style.marginLeft = "-6em";
+        imagenMujeres.style.width = "50%";
+        imagenMujeres.style.marginTop = "12em";
+        imagenMujeres.style.display = "block"; // Asegúrate de mostrar la imagen
 
-    }
-    else{ // Escritorio
+    } else if (anchoPantalla < 1422) {
+        titulo.style.fontSize = "6em";
+        subtitulo.style.fontSize = "5em";
+        boxContacto.style.marginTop = "-12.5em";
+        titulo.style.marginLeft = "-6em";
+        subtitulo.style.marginLeft = "-6em";
+        imagenMujeres.style.marginTop = "12em";
+        imagenMujeres.style.width = "50%";
+        imagenMujeres.style.display = "block"; // Asegúrate de mostrar la imagen
+
+    } else { // Escritorio y pantallas grandes
         titulo.style.fontSize = "7em";
         subtitulo.style.fontSize = "7em";
         boxContacto.style.marginTop = "-17em";
         imagenMujeres.style.width = "50%";
+        imagenMujeres.style.display = "block"; // Asegúrate de mostrar la imagen
+
+        
     }
 }
 
+// Ejecuta la función al cargar la página y cada vez que se redimensiona la ventana
+window.onload = ajustarResponsivo;
+window.onresize = ajustarResponsivo;
+
 // Ejecutar la función al cargar la página y al cambiar el tamaño de la pantalla
-window.addEventListener('resize', ajustarResponsivo);
-// Llama a la función cuando se carga la página
-ajustarResponsivo();
+window.addEventListener('resize');
+
 
 /* --------------------- VALIDACIONES ------------------- */
 const signInForm = document.getElementById('form-enviar');
