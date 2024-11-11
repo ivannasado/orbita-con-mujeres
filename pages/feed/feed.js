@@ -11,7 +11,7 @@ const createPostHTML = (content, imageUrl = '', postId, etiqueta = '') => {
             <div class="card">
                 ${imageUrl ? `<img src="${imageUrl}" alt="Post image">` : ''}
                 <div class="d-flex text-body-secondary pt-3 p-2">
-                    <img class="profile-pic-post" style="width: 50px; margin-right: 10px;" src="../../assets/fotos/TIBIO.jpeg" alt="Perfil"></img>
+                    <img class="profile-pic-post" style="width: 50px; margin-right: 10px;" src="/assets/fotos/TIBIO.jpeg" alt="Perfil"></img>
                     <div class="mb-0 small d-flex align-items-center border-bottom w-100">
                         <strong class="user text-gray-dark">@TibioElGuapo</strong>           
                     </div>
@@ -81,4 +81,14 @@ function setFavoriteButton(postId) {
     });
 }
 
+function cargarTodosLosPosts(etiqueta = null) {
+    const postsContainer = document.querySelector('.row');
+    const posts = JSON.parse(localStorage.getItem("posts")) || [];
 
+    posts.forEach(post => {
+        postsContainer.insertAdjacentHTML('beforeend', createPostHTML(post.content, post.imageUrl, post.id, post.etiqueta));
+    });
+}
+
+// Llama a esta función en el archivo JavaScript del feed principal
+cargarTodosLosPosts();
