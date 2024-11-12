@@ -99,7 +99,7 @@
                     <div class="nombre-y-boton">
                         <span class="nombre-usuario">@TibioElGuapo</span>
                         <a href="../ajustes/ajustes.html" class="btn-editar-perfil" aria-label="Editar perfil">
-                            <i class="bi bi-pencil-square fs-2"></i>
+                            <i class=".favorito.clickeado" class="bi bi-pencil-square fs-2"></i>
                         </a>
                     </div>
                 </div>
@@ -112,10 +112,12 @@
         <div class="container">
             <div class="row">
                 <!-- Columna izquierda (Acerca de mí) -->
+        
                 <div class="col-md-4 d-flex justify-content-left">
+                  
                     <div class="contenedor-izquierdo">
                         <!-- Tarjeta "Acerca de mí" -->
-                        <div class="acerca-de-mi card">
+                        <div class="acerca-de-mi">
                             <div class="card-body">
                                 <h2 class="card-title">Acerca de mí</h2>
                                 <p class="card-text" style="text-align: center;">
@@ -134,32 +136,8 @@
                 <!-- PUBLICACIONES -->
                 
                 <!-- Columna derecha (Post destacados) -->
-                <div class="col-md-8">
-                    <div class="post-destacados">
-                        <!-- Contenido del primer contenedor derecho -->
-                            <div class="card">
-                                <img src="../../assets/fotos/TIBIO.jpeg" alt="">
-                                <div class="d-flex text-body-secondary pt-3 p-2">
-                                    <img class="profile-pic-post"  style="width: 50px; margin-right: 10px;" src="../../assets/fotos/TIBIO.jpeg"></img>
-                                    <div class="mb-0 small d-flex align-items-center border-bottom w-100">
-                                        <strong class="user text-gray-dark">@TibioElGuapo</strong>           
-                                    </div>
-                                    <div class="d-flex align-items-center justify-content-end">
-                                        <button>
-                                        <i class="bi bi-star-fill"  id="favorito-regular"></i>
-                                        <i class="bi bi-star" id="favorito-relleno"></i>
-                                        </button>
-                                    </div>
-                                </div>    
-                                <div class="card-body">
-                                    <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.
-                                    </p>
-                                </div>
-                            </div>   
-                    </div>
-                </div>
-            </div>    
-        </div>        
+            <div class="post-destacados col-md-8"></div>
+                
     </section>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
@@ -167,7 +145,9 @@
         crossorigin="anonymous"></script>
     <script src="../../src/navbar/navbar.js"></script>
     <script src="perfil.js"></script>
-    <script src="../../pages/feed/add-favorite.js"></script>
+    <script src="../feed/postController.js"></script>
+    <script src="../../pages/feed/feed.js"></script>
+    <script src="../feed/add-favorite.js"></script>
 </body>
 
 </html>

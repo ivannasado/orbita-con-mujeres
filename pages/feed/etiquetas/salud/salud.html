@@ -8,26 +8,23 @@
     <!--links-->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <link rel="stylesheet" href="feed.css">
-    <link rel="stylesheet" href="../../src/navbar/navbar.css">
-    <link rel="shortcut icon" href="/assets/Logo-01.png" type="image/x-icon">
+    <link rel="stylesheet" href="../etiquetas.css">
+    <link rel="stylesheet" href="../../../../src/navbar/navbar.css">
+    <link rel="shortcut icon" href="../../../../assets/Logo-01.png" type="image/x-icon">
     <!--Formato de Texto-->
     <div>
-        <!-- Font: Montserrat -->
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link
-        href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Poppins:wght@100;600&display=swap"
-        rel="stylesheet">
         <!-- Font: Poppins -->
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link
-        href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
-        rel="stylesheet">
+            href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+            rel="stylesheet">
         <!-- Font: Style Script -->
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Style+Script&display=swap" rel="stylesheet">
+        <link
+            href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Style+Script&display=swap"
+            rel="stylesheet">
         <!--Bootstramp icons-->
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
     </div>
@@ -44,7 +41,7 @@
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="d-flex align-items-center ms-auto">
-                    <img id="logo-barra-fija" src="../../assets/Logo-01.png" alt="logo">
+                    <img id="logo-barra-fija" src="../../../../assets/Logo-01.png" alt="logo">
                 </div>
                 <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasNavbar"
                     aria-labelledby="offcanvasNavbarLabel">
@@ -55,23 +52,23 @@
                         <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
                             <li>
                                 <div>
-                                    <img id="logo" src="../../assets/Logo-01.png" alt="logo">
+                                    <img id="logo" src="../../../../assets/Logo-01.png" alt="logo">
                                 </div>
                             </li>
                             <li class="nav-item boton-barra-navegacion">
-                                <a class="nav-link" aria-current="page" href="../../pages/perfil/perfil.html">Perfil</a>
+                                <a class="nav-link" aria-current="page" href="../../../perfil/perfil.html">Perfil</a>
                             </li>
                             <li class="nav-item boton-barra-navegacion">
-                                <a class="nav-link" href="../../pages/feed/feed.html">Feed</a>
+                                <a class="nav-link" href="../../feed.html">Feed</a>
                             </li>
                             <li class="nav-item boton-barra-navegacion">
-                                <a class="nav-link" href="../../pages/tablero/tablero.html">Tablero</a>
+                                <a class="nav-link" href="../../../tablero/tablero.html">Tablero</a>
                             </li>
                             <li class="nav-item boton-barra-navegacion">
-                                <a class="nav-link" href="../../pages/nosotras/nosotras.html">Nosotras</a>
+                                <a class="nav-link" href="../../../nosotras/nosotras.html">Nosotras</a>
                             </li>
                             <li class="nav-item boton-barra-navegacion">
-                                <a class="nav-link" href="../../pages/contacto/contacto.html">Contacto</a>
+                                <a class="nav-link" href="../../../contacto/contacto.html">Contacto</a>
                             </li>
                         </ul>
                     </div>
@@ -82,10 +79,7 @@
         <section>
             <div class="header-pagina container-lg custom-container">
                 <div class="tags-section">
-                    <a class="tag-button" href="../feed/etiquetas/cuidado/cuidado.html" >#CuidadoPersonal</a>
-                    <a class="tag-button" href="../feed/etiquetas/salud/salud.html">#Salud</a>
-                    <a class="tag-button" href="../feed/etiquetas/cultura/cultura.html">#Cultura</a>
-                    <a class="tag-button" href="../feed/etiquetas/ocio/ocio.html">#Ocio</a>
+                    <a class="tag-button" href="../../feed.html"> <- Volver a Feed principal</a>
                 </div>
             </div>
             </div>
@@ -94,45 +88,15 @@
 <!--  -->
     <!-- ******************Nueva publicación********************* -->
     <main>
-        <section class="section-new-post">
-            <div class="new-post container-lg">
-                <form id="newPostForm">
-                <div class="post-header container-lg">
-                    <img src="/assets/fotos/TIBIO.jpeg" alt="Perfil" class="profile-pic-status-bar">
-                    <div class="input-publish-container">
-                        <input type="text" id="postText" placeholder="¿Qué estás pensando?" class="input-post">
-                        <button class="publish-button" type="submit" >Publicar</button>
-                    </div>  <!-- onclick="publishPost()" -->
-                </div>
-
-                <div class="post-options">
-                    <input class="media-button" type="file" id="postImage" accept="image/*"> <!-- <i class="bi bi-images "></i> -->
-                   
-                    <div class="select" >
-                        <select id="menu-etiqueta">
-                            <option selected disabled> Etiqueta </option>
-                            <option value="cuidado" > Cuidado Personal </option>
-                            <option value="salud"> Salud </option>
-                            <option value="cultura"> Cultura </option>
-                            <option value="ocio"> Ocio </option>
-                        </select>                   
-                    </div>
-
-
-                      <!-- Pendiente  -->
-                </div>
-                </form>
-            </div>
-        </section>
 
         <!--Publicaciónes-->
         <section>
             <div class="row" data-masonry='{"percentPosition": true }'>
-                <!-- <div class="col-sm-6 col-lg-4 mb-4" >
+                 <!-- <div class="col-sm-6 col-lg-4 mb-4" >
                     <div class="card">
-                        <img src="../../assets/fotos/TIBIO.jpeg" alt="">
+                        <img src="../../../../assets/fotos/TIBIO.jpeg" alt="">
                         <div class="d-flex text-body-secondary pt-3 p-2">
-                            <img class="profile-pic-post"  style="width: 50px; margin-right: 10px;" src="../../assets/fotos/TIBIO.jpeg"></img>
+                            <img class="profile-pic-post"  style="width: 50px; margin-right: 10px;" src="../../../../assets/fotos/TIBIO.jpeg"></img>
                             <div class="mb-0 small d-flex align-items-center border-bottom w-100">
                                 <strong class="user text-gray-dark">@TibioElGuapo</strong>           
                             </div>
@@ -145,9 +109,11 @@
                       <div class="card-body">
                         <p class="card-text">Esto es una prueba.
                         </p>
+                        <p class="card-text"><small class="text-muted">#Salud</small></p>
                       </div>
                     </div>
                 </div> -->
+
             </div>
                 
         </section>
@@ -161,10 +127,11 @@
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
         crossorigin="anonymous"></script>
     <!--<script src="https://cdn.jsdelivr.net/npm/masonry-layout@4.2.2/dist/masonry.pkgd.min.js" integrity="sha384-GNFwBvfVxBkLMJpYMOABq3c+d3KnQxudP/mGPkzpZSTYykLBNsZEnG2D9G/X/+7D" crossorigin="anonymous" async></script> -->
-    <script src="../../src/navbar/navbar.js"></script>
-    <script src="postController.js"></script>
-    <script src="feed.js"></script>
-    <script src="add-favorite.js"></script>
+    <script src="../../../../src/navbar/navbar.js"></script>
+    <script src="../../postController.js"></script>
+    <script src="../../feed.js"></script>
+    <script src="salud.js"></script>
+    <script src="../../add-favorite.js"></script>
    
 </body>
 

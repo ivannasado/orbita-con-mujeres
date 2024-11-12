@@ -1,124 +1,64 @@
-/* function cambiarColor() {
-    let boton = document.getElementById("favorito-regular");
-    boton.classList.toggle("clickeado");  // Alterna la clase 'clickeado'
-} */
 
+// Función para manejar el clic en el botón de favorito en cualquier página
+function toggleFavorite(button, postId) {
+    const icon = button.querySelector("i");
 
-const btnsFavorite = document.querySelectorAll('.favorito');
-const publi = document.querySelectorAll('.row');
+    if (icon.classList.contains("bi-star")) {
+        icon.classList.remove("bi-star");
+        icon.classList.add("bi-star-fill");
 
+        const postContent = button.closest(".card").outerHTML;
+        localStorage.setItem(`favoritePost-${postId}`, postContent);
+    } else {
+        icon.classList.remove("bi-star-fill");
+        icon.classList.add("bi-star");
 
-const containerPostFavorites = document.querySelector(
-	'.post-destacados'
-);
-const postFavorites = document.querySelector('.card');
+        localStorage.removeItem(`favoritePost-${postId}`);
+    }
 
-let favorites = [];
+    loadFavoritePosts(); // Recargar los favoritos en el perfil
+}
 
-const updateFavoritesInLocalStorage = () => {
-	localStorage.setItem('favorites', JSON.stringify(favorites));
-};
-
-const loadFavoritesFromLocalStorage = () => {
-	const storedFavorites = localStorage.getItem('favorites');
-
-	if (storedFavorites) {
-		favorites = JSON.parse(storedFavorites);
-		showHTML();
-	}
-};
-
-const toggleFavorite = post => {
-	const index = favorites.findIndex(
-		element => element.id === post.id
-	);
-
-	if (index > -1) {
-		favorites.splice(index, 1);
-		updateFavoritesInLocalStorage();
-	} else {
-		favorites.push(post);
-		updateFavoritesInLocalStorage();
-	}
-};
-
-const updateFavoritePage = () => {
-	postFavorites.innerHTML = '';
-
-	favorites.forEach(fav => {
-		// Crear un nuevo elemento 'div' para el producto favorito
-		const favoriteCard = document.createElement('div');
-		favoriteCard.classList.add('card');
-
-		// Crear y añadir el título del producto
-		const titleElement = document.createElement('p');
-		titleElement.classList.add('title');
-		titleElement.textContent = fav.title;
-		favoriteCard.appendChild(titleElement);
-
-		// Crear y añadir el precio del producto
-		const priceElement = document.createElement('p');
-		priceElement.textContent = fav.price;
-		favoriteCard.appendChild(priceElement);
-
-		// Añadir el producto favorito a la lista
-		postFavorites.appendChild(favoriteCard);
-	});
-};
-
-const showHTML = () => {
-	publi.forEach(product => {
-		const contentProduct = product.querySelector(
-			'.content-card-product'
-		);
-		const productId = contentProduct.dataset.productId;
-		const isFavorite = favorites.some(
-			favorite => favorite.id === productId
-		);
-
-		const favoriteButton = product.querySelector('.favorite');
-		const favoriteActiveButton =
-			product.querySelector('#added-favorite');
-		const favoriteRegularIcon = product.querySelector(
-			'#favorite-regular'
-		);
-		favoriteButton.classList.toggle('favorite-active', isFavorite);
-		favoriteRegularIcon.classList.toggle('active', isFavorite);
-		favoriteActiveButton.classList.toggle('active', isFavorite);
-	});
-
-	
-	updateFavoritePage();
-};
-
-btnsFavorite.forEach(button => {
-	button.addEventListener('click', e => {
-		const card = e.target.closest('.content-card-product');
-
-		const product = {
-			id: card.dataset.productId,
-			title: card.querySelector('h3').textContent,
-			price: card.querySelector('.price').textContent,
-		};
-
-		toggleFavorite(product);
-
-		showHTML();
-	});
+// Configura los botones de favorito en las publicaciones iniciales
+document.querySelectorAll(".favorito").forEach((button, index) => {
+    const postId = button.getAttribute("data-id");
+    button.addEventListener("click", () => toggleFavorite(button, postId));
 });
 
-const btnClose = document.querySelector('#btn-close');
-const buttonHeaderFavorite = document.querySelector(
-	'#button-header-favorite'
-);
+// Función para cargar las publicaciones favoritas en la página de perfil
+function loadFavoritePosts() {
+    const favoritesContainer = document.querySelector(".post-destacados");
 
-buttonHeaderFavorite.addEventListener('click', () => {
-	containerPostFavorites.classList.toggle('show');
-});
+    // Verifica que el contenedor de favoritos exista antes de continuar
+    if (!favoritesContainer) {
+        console.warn("El contenedor de favoritos (.post-destacados) no se encontró en el DOM.");
+        return;
+    }
 
-btnClose.addEventListener('click', () => {
-	containerPostFavorites.classList.remove('show');
-});
+    favoritesContainer.innerHTML = ''; // Limpia los favoritos actuales
 
-loadFavoritesFromLocalStorage();
-updateFavoritePage();  
+    for (let i = 0; i < localStorage.length; i++) {
+        const key = localStorage.key(i);
+        if (key.startsWith("favoritePost-")) {
+            const postContent = localStorage.getItem(key);
+            const favoritePostDiv = document.createElement("div");
+            favoritePostDiv.innerHTML = postContent;
+
+            const starButton = favoritePostDiv.querySelector(".favorito");
+            const postId = key.split('-')[1];
+            starButton.addEventListener("click", () => {
+                toggleFavorite(starButton, postId);
+                favoritePostDiv.remove(); // Elimina la publicación del perfil
+            });
+
+            favoritesContainer.appendChild(favoritePostDiv);
+        }
+    }
+}
+
+document.addEventListener("DOMContentLoaded", loadFavoritePosts);
+
+
+
+
+
