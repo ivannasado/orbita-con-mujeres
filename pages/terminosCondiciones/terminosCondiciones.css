@@ -29,54 +29,232 @@
     --lineD-color:#ddd;
     /* Tecxto de Usuario */
     --textUsuario-color: #333;
+    
 }
 
 body {
     background-color: var(--body-bg-color);
 }
 
-
-/* Alinear el contenido del <main> */
-main {
-    display: flex;            /* Flexbox para centrar */
-    justify-content: center;  /* Centra horizontalmente */
-    align-items: center;      /* Centra verticalmente */
-    height: 100vh;            /* Altura completa del viewport */
-    text-align: center;       /* Texto alineado al centro */
-    padding: 70px;
-}
-
-/* Imagen con tamaño ajustado */
-img#trabajando {
-    max-width: 300px; /* Ajusta según el diseño */
-    height: auto;     /* Mantiene la proporción */
-    margin: 20;
-    padding:20;
-}
-/* Evitar desbordamiento del contenedor */
-
-.container-md {
-    max-width: 90%; /* Ancho máximo para evitar que se desborde */
-}
-
-html, body {
+* {
     margin: 0;
-    padding:0;
-    overflow-x: hidden; /* Evita el scroll horizontal */
+    padding: 0;
+    box-sizing: border-box;
+    
+}
+
+/***** TITULO *****/
+
+/* Estilos del contenedor*/
+.custom-container {
     width: 100%;
-    height: 100%;
-} 
+    padding: 35px 0;
+    margin: 50px auto !important; 
+    box-sizing: border-box;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    overflow-x: hidden;
+}
 
-/* .container {
-    max-width: 100%; /* Asegúrate de que el contenedor no sobrepase el ancho 
-}  */
+.header-pagina {
+    background: var(--headerPage-bg-color);
+    text-align: center;
+}
 
-/* Estilo para el párrafo */
-p {
-    font-size: 1.5rem;           /* Aumenta el tamaño del texto */
-    margin: 10;                   /* Elimina márgenes extra */
-    color: #333;                 /* Color del texto */
-    font-family: 'Poppins', sans-serif; /* Fuente personalizada */
-    padding-top: 20;
+/* Estilo del texto */
+.title {
+    font-size: 7em;
+    font-family: "Style Script", cursive;
+    color: var(--textUsuario-color); 
+    text-align: center;
+    position: relative;
+    z-index: 2;
+}
 
+h2 {
+    font-family: "Montserrat", sans-serif;
+    font-size: 1.5em;
+}
+
+#btn-title{
+    background-color: var(--navHovBut-bg-color);
+    border: 0;
+}
+
+/* Sección de etiquetas */
+.tags-section {
+    margin-bottom: 20px;
+}
+
+.tag-button {
+    background-color: var(--navBut-bg-color);
+    border: 1px solid var(--navHovBut-bg-color);
+    border-radius: 30px;
+    margin: 10px;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-size: 16px;
+    font-family: "Poppins";
+}
+
+.tag-button:hover {
+    background-color: var(--navHovBut-bg-color);
+    color: var(--navBut-bg-color);
+}
+
+/* Sección de nuevo post */
+.section-new-post{
+    margin: 35px;
+}
+
+.new-post {
+    background-color: var(--navBut-bg-color);
+    padding: 20px;
+    margin: auto;
+    width: 100%;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: center;
+    position:relative ;
+}
+
+/* Contenedor para la imagen de perfil y el input+botón */
+.post-header {
+    display: flex;
+    align-items: center; 
+    width: 100%;
+    margin-bottom: 15px; 
+}
+
+.profile-pic-status-bar {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-right: 15px; 
+}
+
+/* Contenedor del input y botón publicar */
+.input-publish-container {
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+
+.input-post {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid var(--lineD-color);
+    border-radius: 20px;
+    font-size: 16px;
+    margin-right: 10px; 
+}
+
+/* Botón Publicar */
+.publish-button {
+    background-color: var(--pubBut-bg-color);
+    border: none;
+    padding: 10px 20px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 14px;
+    width: 0 20px;
+}
+
+.publish-button:hover {
+    background-color: var(--butPink-bg-color); 
+    color: var(--textWhite-color);
+}
+
+/* Botones Foto/Video y Sentimiento/Actividad */
+.post-options {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    flex-wrap: wrap;
+    width: 100%;
+    margin-bottom: 15px; 
+}
+/*Botón etiquetas*/
+
+.media-button,
+.activity-button,
+#menu-etiqueta {
+    background-color: var(--pubBut-bg-color);
+    border: none;
+    padding: 10px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.media-button:hover,
+.activity-button:hover,
+#menu-etiqueta:hover {
+    background-color: var(--navHovBut-bg-color);
+    color: var(--textWhite-color);
+}
+
+/* publicaciónes */
+
+.container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 20px;
+    
+}
+
+.card {
+    background-color: var(--navBut-bg-color);
+    border: 1px solid var(--lineD-color);
+    border-radius: 8px;
+    padding: 15px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.card img {
+    width: 100%;
+    border-radius: 4px;
+}
+
+.user {
+    font-weight: bold;
+    margin-bottom: 10px;
+    font-family: "Poppins";
+}
+
+.text {
+    margin-top: 10px;
+    color: var(--textUsuario-color);
+}
+
+/* Estamos en proceso de errores CARDS */
+
+.card {
+    font-family: "Montserrat", sans-serif;
+}
+
+.user{
+    font-family: "Poppins";
+}
+
+/*Boton favorito*/
+
+
+
+#favorito-regular {
+    background-color: white;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+}
+
+#favorito-regular.clickeado {
+	
+	color: var(--butPink-bg-color);
 }
