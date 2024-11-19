@@ -11,7 +11,7 @@ import com.orbita.orbitaconmujeres.repository.FavoriteRepository;
 
 
 @RestController
-@RequestMapping("/favorite")
+@RequestMapping("/api/v1/favorite")
 public class FavoriteController {
 
 

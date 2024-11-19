@@ -4,8 +4,10 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 
 @Entity
+@Table(name = "tag")
 public class Tag {
 	
 	// Indica que el atributo será la clave primaria
@@ -15,14 +17,15 @@ public class Tag {
 	
 	private Long idTag;
 	private String categories;
+	private boolean active;
 	
 	protected Tag() {}
 
-	public Long getId() {
+	public Long getIdTag() {
 		return idTag;
 	}
 
-	public void setId(Long idTag) {
+	public void setIdTag(Long idTag) {
 		this.idTag = idTag;
 	}
 
@@ -30,11 +33,17 @@ public class Tag {
 		return categories;
 	}
 
-	public void setName(String categories) {
+	public void setCategories(String categories) {
 		this.categories = categories;
 	}
 
+	public boolean isActive() {
+		return active;
+	}
 
+	public void setActive(boolean active) {
+		this.active = active;
+	}
 	
 
 }

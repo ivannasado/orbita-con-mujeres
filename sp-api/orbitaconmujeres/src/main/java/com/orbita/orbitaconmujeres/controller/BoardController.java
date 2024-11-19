@@ -8,7 +8,7 @@ import com.orbita.orbitaconmujeres.model.Board;
 import com.orbita.orbitaconmujeres.repository.BoardRepository;
 
 @RestController
-@RequestMapping("/Board")
+@RequestMapping("/api/v1/board")
 public class BoardController {
 
 

@@ -13,7 +13,7 @@ import com.orbita.orbitaconmujeres.repository.TagRepository;
 
 
 @RestController
-@RequestMapping("/tag")
+@RequestMapping("/api/v1/tag")
 public class TagController{
 
     final TagRepository tagRepository;

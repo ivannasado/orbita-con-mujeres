@@ -9,7 +9,7 @@ import com.orbita.orbitaconmujeres.model.Admin;
 import com.orbita.orbitaconmujeres.repository.AdminRepository;
 
 @RestController
-@RequestMapping("/admin")
+@RequestMapping("/api/v1/admin")
 public class AdminController{
 
     final AdminRepository adminRepository;

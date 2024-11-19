@@ -7,6 +7,8 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
 @Entity
@@ -19,18 +21,21 @@ public class Board {
 	private Long idBoard;
 	@Column(name = "description", columnDefinition = "VARCHAR(200)")
 	private String description;
-	
 	@Column(name = "image", columnDefinition = "VARCHAR(200)")
 	private String image;
 	private LocalDate creationDate;
+	private boolean active;
+	@ManyToOne
+	@JoinColumn(name = "fk_admin_id")
+	private Admin admin;
 	
 	protected Board() {}
-	
-	public Long getId() {
+
+	public Long getIdBoard() {
 		return idBoard;
 	}
 
-	public void setId(Long idBoard) {
+	public void setIdBoard(Long idBoard) {
 		this.idBoard = idBoard;
 	}
 
@@ -49,15 +54,33 @@ public class Board {
 	public void setImage(String image) {
 		this.image = image;
 	}
-	
-	public LocalDate getDate() {
+
+	public LocalDate getCreationDate() {
 		return creationDate;
 	}
 
-	public void setDate(LocalDate creation_date) {
-		this.creationDate = creation_date;
+	public void setCreationDate(LocalDate creationDate) {
+		this.creationDate = creationDate;
 	}
 
+	public Admin getAdmin() {
+		return admin;
+	}
+
+	public void setAdmin(Admin admin) {
+		this.admin = admin;
+	}
+
+	public boolean isActive() {
+		return active;
+	}
+
+
+	public void setActive(boolean active) {
+		this.active = active;
+	}
+	
+	
 	
 	
 	

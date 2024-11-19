@@ -11,7 +11,7 @@ import com.orbita.orbitaconmujeres.repository.PostRepository;
 
 
 @RestController
-@RequestMapping("/post")
+@RequestMapping("/api/v1/post")
 public class PostController {
 
 
