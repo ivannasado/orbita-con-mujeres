@@ -1,10 +1,12 @@
+//import { postLogin } from "../../src/components/api/postLogin.js";
+
 window.onload = function() {
     // Al cargar la página, agregar la clase que hace que aparezca
     setTimeout(function() {
         document.body.classList.add('fade-in');
     }, 100); // Pequeño retraso para que el efecto sea visible
       // Llamar a la función para ajustar estilos según la pantalla
-      ajustarResponsivo();
+      //ajustarResponsivo();
 };
 
 /* --------------------- VALIDACIONES ------------------- */
@@ -66,4 +68,48 @@ document.getElementById('btn-enviar').addEventListener('click', function () { /*
         /* Para insertar el código HTML en el documento en lugar de cambiar el contenido de un elemento, se usa el método insertAdjacentHTML (https://developer.mozilla.org/es/docs/Web/API/Element/innerHTML) */
         mensajeError.insertAdjacentHTML('afterbegin', alertError);
     }
+});
+
+
+const loginForm = document.forms["loginForm"];
+
+loginForm.addEventListener("submit", async (event) => {
+  event.preventDefault();
+  const emailRef = loginForm.elements["email"];
+  const passwordRef = loginForm.elements["password"];
+  emailRef.value = emailRef.value.trim().toLowerCase();
+
+  const formData = {
+    email: emailRef.value,
+    password: passwordRef.value,
+  };
+
+const results = validateLoginForm(formData);
+if (results.isValid) {
+  try {
+    const user = await postLogin(formData);
+    const userSesion = {
+      user,
+      isAdmin: user.roles.some((role) => role.name.toUpperCase() === "ADMIN"),
+      expiration: 0,
+    };
+    localStorage.setItem("userSesion", JSON.stringify(userSesion));
+    loginForm.reset();
+    alert("Hola " + user.firstName);
+    if (userSesion.isAdmin)
+      window.location.href = "/src/pages/admin/admin.html";
+    else
+      window.location.href = "/index.html";
+  } catch (error) {
+    const errorMessage = document.getElementById("post-error-message");
+    errorMessage.innerHTML = error;
+    errorMessage.style.display = "block";
+    setTimeout(() => (errorMessage.style.display = "none"), 5000);
+  }
+} else {
+  const errorMessage = document.getElementById("error-message");
+  errorMessage.innerHTML = results.error;
+  errorMessage.style.display = "block";
+  setTimeout(() => (errorMessage.style.display = "none"), 5000);
+}
 });
