@@ -2,9 +2,10 @@
   "name": "orbita-con-mujeres",
   "version": "1.0.0",
   "description": "Red social para mujeres mexicanas",
-  "main": "server.js",
+  "main": "script.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "script.js"
   },
   "repository": {
     "type": "git",
